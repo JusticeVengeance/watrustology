@@ -1,0 +1,204 @@
+<script type="text/javascript">
+    'use strict';
+
+    $('body').append('\n<div class="lightbox">\n<div class="lightbox-container">\n<div class="row">\n<a href="#lightbox" class="lightbox-close lightbox-toggle">X</a>\n<div class="col-sm-12 lightbox-column">\n</div>\n</div>\n</div>\n</div>\n');
+
+    $('.lightbox-toggle').on('click', function(event) {
+        event.preventDefault();
+        $('.lightbox').fadeToggle('fast');
+
+        var context = $(event.currentTarget).attr('data-lightbox-type');
+        var content = $(event.currentTarget).attr('data-lightbox-content');
+        console.log(event);
+        if (context == 'video') {
+            $('.lightbox-column').append('\n<div class="lightbox-video">\n<iframe src="' + content + '" frameborder="0" allowfullscreen> </iframe>\n</div>\n');
+        } else if (context == 'image') {
+            $('.lightbox-column').append('\n<img src="' + content + '" class="img-" frameborder="0" allowfullscreen>\n');
+        }
+    });
+
+    $('.lightbox-close').on('click', function(event) {
+        event.preventDefault();
+        $('.lightbox-column > *').remove();
+    });
+</script>
+<div ng-controller="communityCtrl" id="community">
+    <div class="row">
+        <span style="height:1px;position:absolute;z-index:-6;" class="col-md-12"></span>
+    </div>
+    <!-- end row -->
+    <script type="text/javascript">
+        var vid = document.getElementById('vid');
+        vid.play();
+    </script>
+    <!-- <div id="video-background"></div> -->
+    <div class="flex-video">
+        <video class="show-for-medium-up" preload loop muted id="vid" src="assets/media/community-nosound.mp4"></video>
+        <img src="assets/images/wto-fallback.jpg" title="Image shown in place of looping background video" alt="photo of a woman smiling">
+        <!-- <div class="content"></div> -->
+    </div>
+    <div class="video-overlap">
+        <div class="container">
+            <a href="#lightbox" class="lightbox-toggle" data-lightbox-type="video" data-lightbox-content="https://www.youtube.com/embed/svxRY0qmob4?rel=0">
+                <div play></div>
+            </a>
+        </div>
+    </div>
+    <div ui-view="carousel">
+        <h3 ng-init="carouselHeading1='The essence of Washington Trust Bank'"></h3>
+        <p ng-init="carouselContent1='In an age of mega banks, Washington Trust Bank is unique. Privately owned for our 114 year history, Washington Trust Bank operates from the same underlying set of beliefs and values that our founders did. Generations of leadership gave us our guiding philosophies. Collectively, we call them Watrustology.'"></p>
+        <h3 ng-init="carouselHeading2='The story of the Northwests oldest and largest private bank'"></h3>
+        <p ng-init="carouselContent2='In an age of mega banks, Washington Trust Bank is unique. Privately owned for our 114 year history, Washington Trust Bank operates from the same underlying set of beliefs and values that our founders did. Generations of leadership gave us our guiding philosophies. Collectively, we call them Watrustology.'"></p>
+        <h3 ng-init="carouselHeading3='Our collective ideaology in one word'"></h3>
+        <p ng-init="carouselContent3='Warustology is our history, philosophies, and guiding principles. It’s doing whatever it takes to create long term prosperity for our clients while dedicating ourselves to supporting the communities in which we live.'"></p>
+    </div>
+    <div ui-view="tagboard"></div>
+    <event-cards></event-cards>
+    <div id="community-social">
+        <div class="social-network row">
+            <div class="col-md-6 col-sm-6">
+                <h3>Join our community</h3>
+                <social-icons></social-icons>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <button style="cursor: pointer;" ui-sref="root.pillars">{{ sponsorshipBtn }}</button>
+                <button style="cursor: pointer;" ui-sref="root.pillars">{{ policyBtn }}</button>
+            </div>
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div id="vertical-pillars" class="col-md-12">
+                <div class="vertical-pillars-heading">
+                    <h3>WTB Crew in Blue</h3>
+                    <p>Watrustology is our identity in 12 letters.
+                        <br>Its everything we believe in, stand for, and hold dear.
+                        <br>Its our partnerships with over 17 charity organizations.
+                        <br>Its why we are commited to improving the places we live and work.</p>
+                </div>
+                <ul class="col-md-2">
+                    <li>
+                        <span>
+                     <wisdom></wisdom>
+                  </span>
+                    </li>
+                    <li>
+                        <span>
+                     <vision></vision>
+                  </span>
+                    </li>
+                    <li>
+                        <span>
+                     <passion></passion>
+                  </span>
+                    </li>
+                    <li>
+                        <span>
+                     <strength></strength>
+                  </span>
+                    </li>
+                </ul>
+            </div>
+            <!-- end vertical pillars -->
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div class="stats col-md-6">
+                <div class="full col-md-12 stat1">
+                    <div class="stat-content">
+                        <large>33,000</large>
+                        <p>hot dogs served to feed the community</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats col-md-6">
+                <div class="half col-md-12 stat2">
+                    <div class="stat-content">
+                        <large>87</large>
+                        <br>
+                        <p>community BBQ's in 2016</p>
+                    </div>
+                </div>
+                <div class="half col-md-12 stat3">
+                    <div class="stat-content">
+                        <large>74</large>
+                        <br>
+                        <p>community BBQ's in 2015</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats col-md-6">
+                <div class="quarter col-md-6 stat4">
+                    <div class="stat-content">
+                        <large>333</large>
+                        <br>
+                        <p>employees</p>
+                        <br>
+                        <small>serve on boards and volunteer at organizations across WTB's footprint</small>
+                    </div>
+                </div>
+                <div class="quarter col-md-6 stat5">
+                    <div class="stat-content">
+                        <large>350</large>
+                        <br>
+                        <p>safety whistles</p>
+                        <br>
+                        <small>handed out to community members downtown</small>
+                    </div>
+                </div>
+                <div class="half col-md-12 stat6">
+                    <div class="stat-content">
+                        <large>600 seconds</large>
+                        <br>
+                        <p>of Grocery Grab Shopping sprees for local charities</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats col-md-6">
+                <div class="full col-md-12 stat7">
+                    <div class="stat-content">
+                        <p>collected over</p>
+                        <br>
+                        <large>1,000,000</large>
+                        <br>
+                        <p>new diapers for needy families in the northwest</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats col-md-6">
+                <div class="full col-md-12 stat8">
+                    <div class="stat-content">
+                        <large>450</large>
+                        <br>
+                        <p>christmas trees given to local families</p>
+                    </div>
+                </div>
+            </div>
+            <div class="stats col-md-6">
+                <div class="half col-md-12 stat9">
+                    <div class="stat-content">
+                        <large>12,000 cowbells</large>
+                        <br>
+                        <p>handed out to support our local Bloomsday event</p>
+                    </div>
+                </div>
+                <div class="quarter col-md-6 stat10">
+                    <div class="stat-content">
+                        <large>30</large>
+                        <br>
+                        <p>pizzas</p>
+                        <br>
+                        <small>delivered to local firefighters</small>
+                    </div>
+                </div>
+                <div class="quarter col-md-6 stat11">
+                    <div class="stat-content">
+                        <large>1 u-haul</large>
+                        <br>
+                        <p>full of firefighter supplies collected</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ceo"></div>
+    </div>
+</div>
