@@ -1,46 +1,73 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ology" ng-controller="MainCtrl">
 <head>
-  <meta charset="UTF-8">
-  <title>Gulp Test</title>
-  <!-- inject:css -->
-  <!-- endinject -->
-  <!-- inject:js -->
-  <!-- endinject -->  
+<title>{{ Page.title() }}</title>
+<!-- inject:css -->
+<!-- endinject -->
+<!-- inject:js -->
+<!-- endinject -->
+<meta name="viewport" http-equiv="pragma" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ Page.description() }}">
+<meta name="keywords" content="{{ Page.keywords() }}">
+<!-- typekit scripts  -->
+<script src="https://use.typekit.net/dgj1csm.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    var pluginUrl =
+    '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-4482977-2']);
+    _gaq.push(['_setDomainName', 'watrust.com']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AAAA3rim-4w:APA91bETBA7jrj5s3wdrffSSBNPAMCnJlbsxxyUggcyX3g917QeD8yeD8goAGGwqijipW5Qub427r--QsF2UDuFa4boGtVYuohKUfd5FjD_bpHDAWAxb6AphROrMiOSvr22IPiO6hebt",
+    authDomain: "about-section.firebaseapp.com",
+    databaseURL: "https://about-section.firebaseio.com/",
+    storageBucket: "gs://about-section.appspot.com/",
+  };
+  firebase.initializeApp(config);
+  // Get a reference to the database service
+  var database = firebase.database();
+</script>
+    <!-- LOAD ANGULARFIRE FOR FIREBASE -->
+<script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
 </head>
 <body>
-  <video class="col-md-12" poster="" id="" playsinline autoplay muted>
-    <!-- WCAG general accessibility recommendation is that media such as background video play through only once. Loop turned on for the purposes of illustration; if removed, the end of the video will fade in the same way created by pressing the "Pause" button  -->
-  	<source src="../src/media/Looping_Intro_v2.mp4" type="video/mov">
-  	<source src="http://localhost/watrustology/src/media/Looping_Intro_v2_1.webm" type="video/webm">
-  </video>
-
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner col-md-12" role="listbox">
-    <div class="carousel-item active">
-      
-    </div>
-    <div class="carousel-item col-md-12">
-      
-    </div>
-    <div class="carousel-item col-md-12">
-      
-    </div>
-  </div>
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="icon-prev" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="icon-next" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
+<script type="text/javascript">
+    $(function(){
+    var lastScrollTop = 0, delta = 5;
+    $(window).scroll(function(event){
+       var st = $(this).scrollTop();
+       
+       if(Math.abs(lastScrollTop - st) <= delta)
+          return;
+       
+       if (st > lastScrollTop){
+         // Scroll down
+         $('header').addClass('nav-hide');
+       } else {
+         // Scroll up
+         $('header').removeClass('nav-hide');
+       }
+       lastScrollTop = st;
+    });
+});
+</script>
+<header role="banner" autoscroll="true" ui-view="navigation"></header>
+<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+<main role="main" autoscroll="true" ui-view="content" style="overflow: hidden;"></main>
+<footer role="contentinfo" autoscroll="false" ui-view="footer"></footer>
 </body>
 </html>

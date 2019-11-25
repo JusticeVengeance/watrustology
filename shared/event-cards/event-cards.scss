@@ -1,0 +1,146 @@
+#event-carousel {
+    div.carousel-inner {
+        min-height: 410px;
+        .item {
+            height: 0;
+            margin-bottom: 0;
+            padding-top: 0;
+        }
+        div {
+            ul {
+                li {
+                    list-style: none;
+                    .thumbnail {
+                        a {
+                            -webkit-transition: all 150ms ease;
+                            -moz-transition: all 150ms ease;
+                            -ms-transition: all 150ms ease;
+                            -o-transition: all 150ms ease;
+                            transition: all 150ms ease;
+                        }
+                        a:hover {
+                            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+                            /* IE 8 */
+                            
+                            filter: alpha(opacity=50);
+                            /* IE7 */
+                            
+                            opacity: 0.6;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* Container */
+
+.cards {
+    background: #FFFFFF;
+    margin: 40px auto 10px;
+    padding: 20px 40px 0;
+    max-width: 960px;
+}
+/* Thumbnail Box */
+ul.thumbnails {
+    margin: 0;
+    padding: 0;
+    li {
+        margin-bottom: 100px;
+    }
+}
+.caption {
+    padding-left: 4%;
+    h4 {
+        font-family: "museo-slab", serif;
+        font-size: 2rem;
+        color: #007ca8;
+    }
+    p {
+        color: #007ca8;
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+}
+.btn.btn-mini {
+    font-size: 0.63rem;
+}
+/* Carousel Control */
+
+.control-box {
+    text-align: center;
+    width: 100%;
+    span {
+        svg {
+            cursor: pointer;
+            width: 40px;
+            path, .cls-1 {
+                fill: #007ca8;
+            }
+        }
+    }
+}
+.carousel-control {
+    background: none;
+    background-image: none !important;
+    color: #007ca8;
+    cursor: pointer;
+    border: 0px;
+    border-radius: 0px;
+    display: inline-block;
+    font-size: 73px;
+    font-weight: 200;
+    line-height: 18px;
+    padding: 4px 10px 0px;
+    position: static;
+    height: 30px;
+    width: 30px;
+}
+/* Mobile Only */
+
+@media (max-width: 767px) {
+    .page-header,
+    .control-box {
+        text-align: center;
+    }
+}
+@media (max-width: 479px) {
+    .caption {
+        word-break: break-all;
+    }
+}
+
+#ology-tagboard {} .heading {
+    color: #fff;
+    background: #79c2be;
+    font-family: "museo-slab", serif;
+    height: 200px;
+    padding: 2% !important;
+    position: relative;
+    text-align: left;
+    @media only screen and (max-width: 730px) {
+        height: 235px;
+    }
+    h2 {
+        float: left;
+        font-size: 2.5em;
+        margin: 0;
+        @media only screen and (max-width: 730px) {
+            font-size: 1.5em;
+            margin-left: 7%;
+        }
+    }
+    h3 {
+        bottom: 30px;
+        clear: left;
+        float: left;
+        position: absolute;
+        @media only screen and (max-width: 730px) {
+            bottom: inherit;
+            font-size: 1em;
+            line-height: 2em;
+            margin-left: 7%;
+        }
+    }
+}

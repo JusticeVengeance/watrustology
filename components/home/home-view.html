@@ -1,0 +1,131 @@
+<script type="text/javascript">
+   'use strict';
+   
+   $('body').append('\n<div class="lightbox">\n<div class="lightbox-container">\n<div class="row">\n<a href="#lightbox" class="lightbox-close lightbox-toggle">X</a>\n<div class="col-sm-12 lightbox-column">\n</div>\n</div>\n</div>\n</div>\n');
+   
+   $('.lightbox-toggle').on('click', function (event) {
+   event.preventDefault();
+   $('.lightbox').fadeToggle('fast');
+   
+   var context = $(event.currentTarget).attr('data-lightbox-type');
+   var content = $(event.currentTarget).attr('data-lightbox-content');
+   console.log(event);
+   if (context == 'video') {
+   $('.lightbox-column').append('\n<div class="lightbox-video">\n<iframe src="' + content + '" frameborder="0" allowfullscreen> </iframe>\n</div>\n');
+   } else if (context == 'image') {
+   $('.lightbox-column').append('\n<img src="' + content + '" class="img-" frameborder="0" allowfullscreen>\n');
+   }
+   });
+   
+   $('.lightbox-close').on('click', function (event) {
+   event.preventDefault();
+   $('.lightbox-column > *').remove();
+   });                                   
+</script>
+<div ng-controller="homeCtrl" id="home">
+<div class="row">
+   <span style="height:1px;position:absolute;z-index:-6;" class="col-md-12"></span>
+</div>
+<!-- end row -->
+<script type="text/javascript">
+   var vid = document.getElementById('vid');
+   vid.play();
+</script>
+<!-- <div id="video-background"></div> -->
+<div class="flex-video">
+   <video class="show-for-medium-up" preload loop muted id="vid" src="assets/media/Looping-bkdg-watrustologyHome.mp4"></video>
+   <img src="assets/images/wto-fallback.jpg" title="Image shown in place of looping background video" alt="photo of a woman smiling">
+   <!-- <div class="content"></div> -->
+</div>
+<div class="video-overlap">
+   <div class="container">
+      <div>
+         <div wto-tagline class="wto-logo-tagline"></div>
+      </div>
+      <a href="#lightbox" class="lightbox-toggle"
+         data-lightbox-type="video"
+         data-lightbox-content="https://www.youtube.com/embed/Px9l2lBCaFI?&loop=1&playlist=PLHN73BCUiufQC_yWA8zqjogPnRVe-x76z&rel=0&modestbranding=1&autohide=1">
+         <div play></div>
+      </a>
+   </div>
+</div>
+<div ui-view="carousel">
+   <!--   <h3 ng-init="carouselHeading1='The essence of Washington Trust Bank'"></h3>
+      <p ng-init="carouselContent1='In an age of mega banks, Washington Trust Bank is unique. Privately owned for our 114 year history, Washington Trust Bank operates from the same underlying set of beliefs and values that our founders did. Generations of leadership gave us our guiding philosophies. Collectively, we call them Watrustology.'"></p>
+      
+      <h3 ng-init="carouselHeading2='The story of the Northwests oldest and largest private bank'"></h3>
+      <p ng-init="carouselContent2='In an age of mega banks, Washington Trust Bank is unique. Privately owned for our 114 year history, Washington Trust Bank operates from the same underlying set of beliefs and values that our founders did. Generations of leadership gave us our guiding philosophies. Collectively, we call them Watrustology.'"></p>
+      
+      <h3 ng-init="carouselHeading3='Our collective ideaology in one word'"></h3>
+      <p ng-init="carouselContent3='Warustology is our history, philosophies, and guiding principles. It’s doing whatever it takes to create long term prosperity for our clients while dedicating ourselves to supporting the communities in which we live.'"></p> -->
+</div>
+<div class="row">
+   <div id="ology-container" class="col-sm-12">
+      <a href="#lightbox" class="lightbox-toggle commercial"
+         data-lightbox-type="video"
+         data-lightbox-content="https://www.youtube.com/embed/svxRY0qmob4?rel=0">
+         <div class="pillars-video col-xs-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <h2>Watrustology in Action</h2>
+         </div>
+      </a>
+      <a href="#lightbox" class="lightbox-toggle commercial"
+         data-lightbox-type="video"
+         data-lightbox-content="https://www.youtube.com/embed/9AJgVIgs038?rel=0">
+         <div class="pillars-video col-xs-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <h2>Beliefs &amp; Values</h2>
+         </div>
+      </a>
+      <a href="#lightbox" class="lightbox-toggle commercial"
+         data-lightbox-type="video"
+         data-lightbox-content="https://www.youtube.com/embed/ZSyb0zV5jL8?rel=0">
+         <div class="pillars-video col-xs-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <h2>One Word 12 Letters</h2>
+         </div>
+      </a>
+      <a href="#lightbox" class="lightbox-toggle commercial"
+         data-lightbox-type="video"
+         data-lightbox-content="https://www.youtube.com/embed/7srQ4FyvmNc?rel=0">
+         <div class="pillars-video col-xs-6 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+            <h2>Genetic Code</h2>
+         </div>
+      </a>
+   </div>
+</div>
+<!-- end row -->
+<div ui-view="tagboard"></div>
+<div id="vertical-pillars" class="col-md-12">
+   <div id="vertical-pillars-heading">
+      <h3>Watrustology is built on four pillars</h3>
+   </div>
+   <ul class="col-md-2">
+      <li>
+         <span>
+            <div wisdom></div>
+         </span>
+      </li>
+      <li>
+         <span>
+            <div vision></div>
+         </span>
+      </li>
+      <li>
+         <span>
+            <div passion></div>
+         </span>
+      </li>
+      <li>
+         <span>
+            <div strength></div>
+         </span>
+      </li>
+   </ul>
+   <a href="#" ui-sref="root.pillars">
+      <button>
+         <h4>Discover the four pillars</h4>
+      </button>
+   </a>
+</div>
+<div id="vertical-pillars-footer">
+   <h3>Learn more about Washington Trust Bank</h3>
+</div>
+<div nav-tiles></div>

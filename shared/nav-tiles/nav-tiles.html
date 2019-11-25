@@ -1,0 +1,58 @@
+<script type="text/javascript">
+$(document).ready(function(){
+  var docWidth = $('body').width(),
+      slidesWidth = $('#nav-tile-container').width(),
+      $images = $('#nav-tile-container');
+
+  $(window).on('resize', function(){
+    docWidth = $('body').width();
+    slidesWidth = $('#nav-tile-container').width();
+  })
+  
+  $(document).mousemove(function(e) {
+    var mouseX = e.pageX,
+        offset = mouseX / docWidth * slidesWidth - mouseX / 2;
+    if (docWidth >= 1024) {
+    $images.css({
+      '-webkit-transform': 'translate3d(' + -offset + 'px,0,0)',
+              'transform': 'translate3d(' + -offset + 'px,0,0)'
+    });
+  }
+  });
+})
+</script>
+
+<div id="nav-tile-container">
+  <ul>
+    <a href="/about/our-story">
+      <li class="nav-tile">
+        <h3>Our Story</h3>
+      </li>
+    </a>
+    <a href="/about/community">
+      <li class="nav-tile">
+        <h3>Community</h3>
+      </li>
+    </a>
+    <a href="/about/careers">
+      <li class="nav-tile">
+        <h3>Careers</h3>
+      </li>
+    </a>
+    <a href="/about/news">
+      <li class="nav-tile">
+        <h3>News</h3>
+      </li>
+    </a>
+      <a href="/about/investor-relations">
+        <li class="nav-tile">
+        <h3>Investor Relations</h3>
+      </li>
+    </a>
+      <a href="/about/contact">
+        <li class="nav-tile">
+      <h3>Contact</h3>
+      </li>
+    </a>
+  </ul>
+</div>

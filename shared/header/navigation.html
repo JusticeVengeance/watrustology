@@ -1,0 +1,74 @@
+<script type="text/javascript">
+   (function() {
+   
+     "use strict";
+   
+     var toggles = document.querySelectorAll(".cmn-toggle-switch");
+   
+     for (var i = toggles.length - 1; i >= 0; i--) {
+       var toggle = toggles[i];
+       toggleHandler(toggle);
+       toggleKeyHandler(toggle);
+     };
+   
+     function toggleHandler(toggle) {
+       toggle.addEventListener("click", function(e) {
+         $('nav').toggleClass('active');
+         (this.classList.contains("active") === true) ? this.classList.remove("active"): this.classList.add("active");
+       });
+     }
+     $('#menu ul li a').on("click", function() {
+       $('nav').removeClass('active');
+       toggle.classList.remove("active");
+     });
+     function toggleKeyHandler(toggle) {
+       toggle.addEventListener("keydown", function(e) {
+         if (e.keyCode == 13) {
+           $('nav').toggleClass('active');
+           e.preventDefault();
+           (this.classList.contains("active") === true) ? this.classList.remove("active"): this.classList.add("active");
+         }
+       });
+     }
+   
+   })();
+</script>
+<script>
+   $(function () {
+   
+       $("#menu a:last-child").on('keydown', function (e) {
+           if (!e.shiftKey && e.keyCode == 9) {
+               e.preventDefault();
+               $("#nav-expander").focus();
+           }
+       });
+   
+       $("#nav-expander").on('keydown', function(e) {
+           if (e.keyCode == 13) {
+               e.preventDefault();
+               $("#menu a:first-child").focus();
+           } 
+       });
+   
+   });
+</script>
+<nav role="navigation" id="menu">
+   <ul class="row">
+      <bug-only></bug-only>
+      <li class="col-md-1 col-sm-12"><a role="menuItem" href="#" ui-sref="root.home">watrustology</a></li>
+      <li class="col-md-1 col-sm-12"><a role="menuItem" href="#" ui-sref="root.our-story">our story</a></li>
+      <li class="col-md-1 col-sm-12"><a role="menuItem" href="#" ui-sref="root.community">community</a></li>
+      <li class="col-md-1 col-sm-12"><a role="menuItem" href="#" ui-sref="root.careers">careers</a></li>
+      <li class="col-md-1 col-sm-12"><a role="menuItem" href="#" ui-sref="root.news">news</a></li>
+      <li class="col-md-1 col-sm-12"><a role="menuItem" href="#" ui-sref="root.investor-relations">investor relations</a></li>
+      <li class="col-md-1 col-sm-12"><a role="menuItem" href="#" ui-sref="root.contacts">contact</a></li>
+   </ul>
+</nav>
+<a href="/home/">
+   <wtb-logo></wtb-logo>
+</a>
+<div class="nav-col">
+   <span class="cmn-toggle-switch cmn-toggle-switch__htx" id="nav-expander">
+   <span>toggle menu</span>
+   </span>
+</div>
